@@ -4,3 +4,20 @@ logging:
   level:
     org.springframework.security: DEBUG
     org.springframework.security.oauth2: DEBUG
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          my-client:
+            client-id: client-id
+            client-secret: client-secret
+            authorization-grant-type: authorization_code
+            redirect-uri: http://127.0.0.1:8081/login/oauth2/code/my-client
+            scope: openid, profile
+            provider: auth-server
+        provider:
+          auth-server:
+            authorization-uri: http://10.42.6.170:9033/oauth2/authorize
+            token-uri: http://10.42.6.170:9033/oauth2/token
+            user-info-uri: http://10.42.6.170:9033/userinfo
